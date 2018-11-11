@@ -6,7 +6,7 @@
 /*   By: rvalenti <rvalenti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 22:23:39 by rvalenti          #+#    #+#             */
-/*   Updated: 2018/11/11 05:33:11 by rvalenti         ###   ########.fr       */
+/*   Updated: 2018/11/11 05:45:12 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ static char		**ft_fill_tab(char const *s, char c, char **tab, int count)
 	int		i;
 	int		j;
 	int		k;
-	char	***tmptab;
 
-	tmptab = &tab;
 	i = 0;
 	j = -1;
 	while (++j < count && s[i] != '\0')
@@ -31,7 +29,7 @@ static char		**ft_fill_tab(char const *s, char c, char **tab, int count)
 			k++;
 		if (!(tab[j] = ft_strsub(s, i, k)))
 		{
-			ft_freetab((void***)tmptab);
+			ft_freetab((void***)(&tab));
 			return (tab);
 		}
 		i += k;
