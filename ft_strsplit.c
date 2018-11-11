@@ -6,27 +6,22 @@
 /*   By: rvalenti <rvalenti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 22:23:39 by rvalenti          #+#    #+#             */
-/*   Updated: 2018/11/10 13:43:58 by rvalenti         ###   ########.fr       */
+/*   Updated: 2018/11/11 05:33:11 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			**ft_strsplit(char const *s, char c)
+static char		**ft_fill_tab(char const *s, char c, char **tab, int count)
 {
-	char	**dst;
-	int		count;
 	int		i;
 	int		j;
 	int		k;
+	char	***tmptab;
 
-	if (s == 0)
-		return (NULL);
-	count = ft_countword(s, c);
+	tmptab = &tab;
 	i = 0;
 	j = -1;
-	if (!(dst = (char**)malloc(sizeof(char*) * count + 1)))
-		return (NULL);
 	while (++j < count && s[i] != '\0')
 	{
 		k = 0;
@@ -34,9 +29,27 @@ char			**ft_strsplit(char const *s, char c)
 			i++;
 		while (s[i + k] != c && s[i + k] != '\0')
 			k++;
-		dst[j] = ft_strsub(s, i, k);
+		if (!(tab[j] = ft_strsub(s, i, k)))
+		{
+			ft_freetab((void***)tmptab);
+			return (tab);
+		}
 		i += k;
 	}
-	dst[j] = NULL;
+	tab[j] = NULL;
+	return (tab);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	char	**dst;
+	int		count;
+
+	if (s == 0)
+		return (NULL);
+	count = ft_countword(s, c);
+	if (!(dst = (char**)malloc(sizeof(char*) * count + 1)))
+		return (NULL);
+	dst = (ft_fill_tab(s, c, dst, count));
 	return (dst);
 }

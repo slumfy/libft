@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_freetab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvalenti <rvalenti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 06:56:05 by rvalenti          #+#    #+#             */
-/*   Updated: 2018/11/11 04:58:29 by rvalenti         ###   ########.fr       */
+/*   Created: 2018/11/11 04:43:37 by rvalenti          #+#    #+#             */
+/*   Updated: 2018/11/11 05:10:12 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_freetab(void ***tab)
 {
-	if (ap)
+	size_t i;
+
+	i = 0;
+	while ((*tab)[i])
 	{
-		free(*ap);
-		*ap = NULL;
+		free((*tab)[i]);
+		(*tab)[i] = NULL;
+		i++;
 	}
+	free(*tab);
+	*tab = NULL;
 }

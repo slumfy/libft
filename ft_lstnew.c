@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 18:27:57 by rvalenti          #+#    #+#             */
-/*   Updated: 2018/11/09 21:00:16 by rvalenti         ###   ########.fr       */
+/*   Updated: 2018/11/11 05:35:32 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	}
 	else
 	{
-		new->content = (t_list*)malloc(sizeof(t_list));
+		if (!(new->content = (t_list*)malloc(sizeof(t_list))))
+			return (NULL);
 		ft_memcpy(new->content, content, content_size);
 		new->content_size = content_size;
 		new->next = NULL;

@@ -6,7 +6,7 @@
 /*   By: rvalenti <rvalenti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 12:09:01 by rvalenti          #+#    #+#             */
-/*   Updated: 2018/11/10 13:42:38 by rvalenti         ###   ########.fr       */
+/*   Updated: 2018/11/11 05:11:05 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,5 @@ void			ft_swap(int *a, int *b);
 int				*ft_sortint(int *s, size_t len);
 size_t			ft_nbrlen(long long n);
 int				ft_countword(char const *s, char c);
+void			ft_freetab(void ***tab);
 #endif
