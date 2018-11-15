@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 19:46:05 by rvalenti          #+#    #+#             */
-/*   Updated: 2018/11/09 05:09:22 by rvalenti         ###   ########.fr       */
+/*   Updated: 2018/11/16 00:24:23 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@ void	ft_strclr(char *s)
 {
 	if (s == 0)
 		return ;
-	ft_bzero((void*)s, ft_strlen(s));
+	while (*s)
+		*s++ = 0;
 }
